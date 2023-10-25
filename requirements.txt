@@ -1,0 +1,10 @@
+flask
+PyMuPDF
+openai
+pymongo
+pillow
+reportlab
+pytesseract
+Image
+flask_cors
+google.generativeai
