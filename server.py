@@ -189,7 +189,8 @@ def extract_ocr_text_from_pdf(pdf_file):
             ocr_text += f"OCR Result for Image {img_index + 1}:\n"
             ocr_text += pytesseract.image_to_string(img)
             ocr_text += "\n"
-
+        page_text = page.get_text()
+        ocr_text += page_text + "\n"
     return ocr_text
 
 
