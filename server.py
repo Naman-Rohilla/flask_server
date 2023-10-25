@@ -154,12 +154,14 @@ def extract_ocr_text_from_pdf_chatbot(pdf_file):
 
 @app.route('/process_pdf', methods=['POST', 'GET', 'OPTIONS'])
 def process_pdf():
+    print("entered1")
     pdf_file = request.files['pdf_file']
 
     print(pdf_file);
     if pdf_file:
+        print("entered2")
         ocr_text = extract_ocr_text_from_pdf(pdf_file)
-
+        
         print("completed")
         # print(new_pdf_path)
         # send_file(new_pdf_path, as_attachment=True)
@@ -171,8 +173,10 @@ def process_pdf():
         return jsonify({"error": "No PDF file provided"})
 
 def extract_ocr_text_from_pdf(pdf_file):
+    print("entered3")
     ocr_text = ""
     doc = fitz.open(stream=pdf_file.read(), filetype="pdf")
+    print("entered4")
     for page in doc:
         image_list = page.get_images(full=True)
         for img_index, img in enumerate(image_list):
