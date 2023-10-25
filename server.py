@@ -139,6 +139,8 @@ def extract_ocr_text_from_pdf_chatbot(pdf_file):
     ocr_text = ""
     doc = fitz.open(stream=pdf_file.read(), filetype="pdf")
     for page in doc:
+        page_text = page.get_text()
+        ocr_text += page_text + "\n"
         image_list = page.get_images(full=True)
         for img_index, img in enumerate(image_list):
             xref = img[0]
@@ -179,6 +181,8 @@ def extract_ocr_text_from_pdf(pdf_file):
     doc = fitz.open(stream=pdf_file.read(), filetype="pdf")
     print("entered4")
     for page in doc:
+        page_text = page.get_text()
+        ocr_text += page_text + "\n"
         image_list = page.get_images(full=True)
         for img_index, img in enumerate(image_list):
             xref = img[0]
@@ -189,8 +193,7 @@ def extract_ocr_text_from_pdf(pdf_file):
             ocr_text += f"OCR Result for Image {img_index + 1}:\n"
             ocr_text += pytesseract.image_to_string(img)
             ocr_text += "\n"
-        page_text = page.get_text()
-        ocr_text += page_text + "\n"
+        
     return ocr_text
 
 
