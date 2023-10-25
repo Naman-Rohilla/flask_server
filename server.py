@@ -107,8 +107,9 @@ def process_pdf_chatbot():
     print(pdf_file);
     if pdf_file:
         ocr_text = extract_ocr_text_from_pdf_chatbot(pdf_file)
+        temp_text = ocr_text if len(ocr_text) < 7799 else ocr_text[0:7799]
 
-        data = "use this data as refernce: " + ocr_text[0:7799] + "write 5 important points of the data"
+        data = "use this data as refernce: " + temp_text + "write 5 important points of the data"
 
         models = [m for m in palm.list_models() if 'generateText' in m.supported_generation_methods]
         model = models[0].name
