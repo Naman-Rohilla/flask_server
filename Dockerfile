@@ -3,7 +3,7 @@ FROM python:3.10
 RUN apt-get update && apt-get install -y tesseract-ocr
 
 # Install your Flask application dependencies here
-COPY requirements.txt
+COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
