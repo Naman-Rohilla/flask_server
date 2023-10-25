@@ -17,7 +17,7 @@ from reportlab.pdfgen import canvas
 
 # Replace the placeholder with your Atlas connection string
 uri = "mongodb+srv://flask_app_user:owIucyK1X0hFTNtL@clusterflask.thetpql.mongodb.net/?retryWrites=true&w=majority"
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # Update the path accordingly
+pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'  # Update the path accordingly
 # openai.api_key  = os.getenv("openAI")
 # 
 
