@@ -107,7 +107,7 @@ def process_pdf_chatbot():
     print(pdf_file);
     if pdf_file:
         ocr_text = extract_ocr_text_from_pdf_chatbot(pdf_file)
-        temp_text = ocr_text if len(ocr_text) < 7799 else ocr_text[0:7799]
+        temp_text = ocr_text if len(ocr_text) < 7599 else ocr_text[0:7599]
 
         data = "use this data as refernce: " + temp_text + "write 5 important points of the data"
 
@@ -139,6 +139,8 @@ def extract_ocr_text_from_pdf_chatbot(pdf_file):
     ocr_text = ""
     doc = fitz.open(stream=pdf_file.read(), filetype="pdf")
     for page in doc:
+        page_text = page.get_text()
+        ocr_text += page_text + "\n"
         image_list = page.get_images(full=True)
         for img_index, img in enumerate(image_list):
             xref = img[0]
@@ -179,6 +181,8 @@ def extract_ocr_text_from_pdf(pdf_file):
     doc = fitz.open(stream=pdf_file.read(), filetype="pdf")
     print("entered4")
     for page in doc:
+        page_text = page.get_text()
+        ocr_text += page_text + "\n"
         image_list = page.get_images(full=True)
         for img_index, img in enumerate(image_list):
             xref = img[0]
