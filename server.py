@@ -30,7 +30,7 @@ db = client.myDatabase
 
 app = Flask(__name__, static_folder='static')
 
-CORS(app,  resources={r"/api/*": {"origins": "https://chatbot-theta-three.vercel.app"}})
+CORS(app,  resources={r"/api/*": {"origins": "https://www.namanrohilla.com"}})
 
 try:
     client.admin.command('ping')
@@ -84,7 +84,7 @@ def hello_world():
 
         print(completion)
         response = make_response()
-        response.headers.add("Access-Control-Allow-Origin", "https://chatbot-theta-three.vercel.app")
+        response.headers.add("Access-Control-Allow-Origin", "https://www.namanrohilla.com")
         response.data = completion.result if completion.result != None else "please try again"
 
         return response
@@ -128,7 +128,7 @@ def process_pdf_chatbot():
 
         print("completed")
         response = make_response()
-        response.headers.add("Access-Control-Allow-Origin", "https://chatbot-theta-three.vercel.app")
+        response.headers.add("Access-Control-Allow-Origin", "https://www.namanrohilla.com")
         response.data = content if completion.result != None else "please try again"
         response.ocr = data
         return response
@@ -169,7 +169,7 @@ def process_pdf():
         # print(new_pdf_path)
         # send_file(new_pdf_path, as_attachment=True)
         response = make_response()
-        response.headers.add("Access-Control-Allow-Origin", "https://chatbot-theta-three.vercel.app")
+        response.headers.add("Access-Control-Allow-Origin", "https://www.namanrohilla.com")
         response.data = ocr_text if len(ocr_text) > 0 else "please try again"
         return response
     else:
