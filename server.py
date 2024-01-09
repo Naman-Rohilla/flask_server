@@ -199,4 +199,4 @@ def extract_ocr_text_from_pdf(pdf_file):
 
 
 if __name__ == "__main__":
-  app.run(host="0.0.0.0", debug=True)
+  app.run(host="0.0.0.0", debug=True, port=os.getenv("PORT", default=5000))
